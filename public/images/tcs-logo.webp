@@ -1,0 +1,5 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='120' viewBox='0 0 200 120'>
+  <rect width='200' height='120' fill='#fff' rx='8'/>
+  <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Arial, Helvetica, sans-serif' fill='#10294a'>TCS</text>
+  <text x='50%' y='70%' dominant-baseline='middle' text-anchor='middle' font-size='10' font-family='Arial, Helvetica, sans-serif' fill='#10294a'>Tata Consultancy Services</text>
+</svg>
