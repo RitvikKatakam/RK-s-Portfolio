@@ -101,7 +101,7 @@ const AppShowcase = () => {
               {/* Third Project */}
               <div className="project" ref={ycDirectoryRef}>
                 <a
-                  href="https://github.com/RitvikKatakam/emp_details_trackingc"
+                  href="https://github.com/RitvikKatakam/emp_details_tracking"
                   target="_blank" rel="noreferrer noopener"
                 >
                   <div className="image-wrapper bg-black">
