@@ -10,12 +10,13 @@ const Projects = () => {
 
   const mlProjects = [
     { title: 'Face Detection System', desc: 'A real-time face detection system built using machine learning techniques.', github: 'https://github.com/RitvikKatakam/facedetectionsystem' },
-    { title: 'BMS – Bank Management System (Java)', desc: 'A Full Stack Bank Management System with features like account creation, transactions, and user management.', github: 'https://github.com/RitvikKatakam/BMS' },
-    { title: 'Hate Speech Detection using NLP & Machine Learning', desc: 'Developed an NLP-based system to detect and classify hate speech in social media text, enabling automated identification of harmful and offensive content to promote safer online interactions.', github: 'https://github.com/RitvikKatakam/hatespeechdetectionusing_twitter_dataset' }
+    { title: 'Hate Speech Detection using NLP & Machine Learning', desc: 'Developed an NLP-based system to detect and classify hate speech in social media text, enabling automated identification of harmful and offensive content to promote safer online interactions.', github: 'https://github.com/RitvikKatakam/hatespeechdetectionusing_twitter_dataset' },
+    { title: 'Robo Navigation System', desc: 'An autonomous navigation system for robotic agents, utilizing pathfinding algorithms and sensor integration for seamless movement in complex environments.', github: 'https://github.com/RitvikKatakam/rabonavigationsystem' }
   ];
 
   const archiveProjects = [
     { name: 'jarvis-ai', type: 'folder', url: 'https://github.com/RitvikKatakam/jarvis-ai' },
+    { name: 'bank-management-system', type: 'folder', url: 'https://github.com/RitvikKatakam/BMS' },
     { name: 'creditcardfrauddetection', type: 'folder', url: 'https://github.com/RitvikKatakam/nitk_projects/tree/main/data%20science' },
     { name: 'emergency_vehicle_dispatch', type: 'folder', url: 'https://github.com/RitvikKatakam/nitk_projects/tree/main/daa' },
     { name: 'intrusion_detection_system', type: 'folder', url: 'https://github.com/RitvikKatakam/nitk_projects/tree/main/ml' },
