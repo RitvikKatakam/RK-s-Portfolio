@@ -62,6 +62,14 @@ const Skills = () => {
         { name: 'Flask',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg', invert: true },
         { name: 'FastAPI',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' }
       ]
+    },
+    {
+      title: "Operating Systems",
+      skills: [
+        { name: 'Windows',    icon: '/os/windows.png' },
+        { name: 'Kali Linux', icon: '/os/kali.png' },
+        { name: 'Ubuntu',     icon: '/os/ubuntu.png' }
+      ]
     }
   ];
 
