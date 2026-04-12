@@ -60,9 +60,6 @@ const Profile = () => {
 
         {/* Main Content Area */}
         <div className="hero-main">
-          <div className="intro-badge">
-            <span className="star-icon">✦</span> Profile Overview
-          </div>
           
           <h1 className="hero-title">
             I'm Ritvik Katakam,<br/>Full Stack Developer
