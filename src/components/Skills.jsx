@@ -94,6 +94,8 @@ const Skills = () => {
       title: "Certifications",
       icon: <Award className="academic-head-icon text-pink-400" size={28} />,
       items: [
+        { name: "Generative AI", icon: <Sparkles size={20} /> },
+        { name: "Prompt Engineering", icon: <PenTool size={20} /> },
         { name: "Human Intelligence", icon: <Sparkles size={20} /> },
         { name: "Python", icon: <Code size={20} /> },
         { name: "Data Structures and Algorithms (DSA)", icon: <Binary size={20} /> },

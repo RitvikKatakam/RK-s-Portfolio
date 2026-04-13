@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import eduWriteLogo from '../assets/edu_write_logo.png';
 import dsaAssistantLogo from '../assets/dsa_ai_assistant_logo.png';
 import brainWaveLogo from '../assets/brain_wave_ai_logo.png';
@@ -49,6 +50,23 @@ const Projects = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
   const displayedRT = showAllRT ? realTimeProjects : realTimeProjects.slice(0, 3);
 
   return (
@@ -59,9 +77,27 @@ const Projects = () => {
         <div className="portfolio-division">
           <div className="project-category">
             <h3 className="category-title">Core Projects</h3>
-            <div className="projects-grid">
+            <motion.div 
+              className="projects-grid"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {mlProjects.map((project, index) => (
-                <div key={index} className="project-card">
+                <motion.div 
+                  key={index} 
+                  className="project-card"
+                  variants={cardVariants}
+                  whileHover={{ 
+                    y: -10, 
+                    scale: 1.02,
+                    perspective: 1000,
+                    rotateX: 2,
+                    rotateY: 2,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+                  }}
+                >
                   <div className="card-header">
                     <h3>{project.title}</h3>
                   </div>
@@ -71,9 +107,9 @@ const Projects = () => {
                   ) : (
                     <div className="project-link" style={{ opacity: 0.5 }}>View Details →</div>
                   )}
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
             <div style={{ textAlign: 'center', marginTop: '2rem' }}>
               <button 
                 className="btn-secondary-outline" 
@@ -87,9 +123,26 @@ const Projects = () => {
 
           <div className="project-category">
             <h3 className="category-title">Real Time Projects</h3>
-            <div className="projects-grid">
+            <motion.div 
+              className="projects-grid"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {displayedRT.map((project, index) => (
-                <div key={index} className="project-card realtime-card">
+                <motion.div 
+                  key={index} 
+                  className="project-card realtime-card"
+                  variants={cardVariants}
+                  whileHover={{ 
+                    y: -10, 
+                    scale: 1.02,
+                    rotateX: -2,
+                    rotateY: 2,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+                  }}
+                >
                   <div className="card-logo">
                     <img src={project.logo} alt={project.title} />
                   </div>
@@ -103,9 +156,9 @@ const Projects = () => {
                       )}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
             {realTimeProjects.length > 3 && (
               <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                 <button 

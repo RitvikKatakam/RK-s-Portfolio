@@ -6,8 +6,8 @@ const Home = () => {
   const x = useMotionValue(200);
   const y = useMotionValue(200);
 
-  const rotateX = useTransform(y, [0, 400], [15, -15]);
-  const rotateY = useTransform(x, [0, 400], [-15, 15]);
+  const rotateX = useTransform(y, [0, 400], [8, -8]);
+  const rotateY = useTransform(x, [0, 400], [-8, 8]);
 
   function handleMouse(event) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -51,42 +51,22 @@ const Home = () => {
       
       <style>{`
         .cyber-name {
-          font-family: 'Orbitron', 'Inter', sans-serif;
-          background: linear-gradient(90deg, var(--neon-cyan), #8a2be2, var(--neon-magenta));
-          background-size: 200% auto;
+          font-family: 'Inter', system-ui, -apple-system, sans-serif;
+          font-weight: 700;
+          background: linear-gradient(90deg, #60a5fa, #6366f1);
           color: #fff;
           background-clip: text;
           text-fill-color: transparent;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: cyber-gradient 3s linear infinite;
-          text-shadow: 0px 0px 20px rgba(var(--neon-cyan-rgb), 0.6), 0px 0px 40px rgba(var(--neon-magenta-rgb), 0.4);
           position: relative;
           z-index: 2;
+          text-shadow: 0 4px 15px rgba(99, 102, 241, 0.15); /* Very subtle depth */
         }
 
         .name-container {
           position: relative;
           display: inline-block;
-        }
-
-        .name-glow-line {
-          position: absolute;
-          top: 50%;
-          left: -10%;
-          width: 120%;
-          height: 8px;
-          background: linear-gradient(90deg, transparent, rgba(var(--neon-cyan-rgb), 0.5), rgba(var(--neon-magenta-rgb), 0.5), transparent);
-          filter: blur(8px);
-          transform: translateY(-50%);
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        @keyframes cyber-gradient {
-          to {
-            background-position: 200% center;
-          }
         }
 
         .cyber-tagline {
@@ -106,61 +86,103 @@ const Home = () => {
         }
 
         .cyber-role {
-          color: #94a3b8;
-          font-size: 1.25rem;
-          letter-spacing: 2px;
+          color: var(--neon-cyan);
+          font-size: 0.85rem;
+          font-weight: 700;
+          letter-spacing: 2.5px;
           text-transform: uppercase;
           margin-bottom: 2rem;
-          font-family: 'Inter', monospace;
-          background: rgba(var(--neon-cyan-rgb), 0.05);
+          font-family: 'Inter', sans-serif;
+          background: rgba(var(--neon-cyan-rgb), 0.08);
           border: 1px solid rgba(var(--neon-cyan-rgb), 0.2);
-          display: inline-block;
-          padding: 0.5rem 1rem;
-          border-radius: 4px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.6rem 2.2rem;
+          border-radius: 9999px;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 0 1px 0 rgba(255, 255, 255, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        .cyber-role:hover {
+          background: rgba(var(--neon-cyan-rgb), 0.12);
+          border-color: rgba(var(--neon-cyan-rgb), 0.4);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-radial-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 800px;
+          height: 800px;
+          background: radial-gradient(circle, rgba(var(--neon-cyan-rgb), 0.03) 0%, transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .bg-blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(100px);
+          z-index: 0;
+          opacity: 0.15;
+          pointer-events: none;
+          animation: blob-float 20s infinite alternate;
+        }
+
+        .blob-orange { width: 400px; height: 400px; background: #f97316; top: 10%; right: 10%; animation-delay: 0s; }
+        .blob-purple { width: 500px; height: 500px; background: #a78bfa; bottom: 10%; left: 5%; animation-delay: -5s; }
+        .blob-blue { width: 350px; height: 350px; background: #3b82f6; top: 40%; left: 30%; animation-delay: -10s; }
+
+        @keyframes blob-float {
+          from { transform: translate(0, 0) scale(1); }
+          to { transform: translate(50px, 100px) scale(1.1); }
         }
 
         .neon-btn-primary {
-          background: linear-gradient(90deg, var(--neon-cyan), #8a2be2, var(--neon-magenta));
-          background-size: 200% auto;
-          color: white;
-          padding: 0.8rem 2rem;
+          background: var(--neon-cyan);
+          color: #000;
+          padding: 0.8rem 2.2rem;
           font-weight: 700;
-          border-radius: 4px;
+          border-radius: 12px;
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 1px;
-          transition: all 0.3s ease;
-          box-shadow: 0 0 15px rgba(var(--neon-cyan-rgb), 0.4);
+          transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
           border: none;
-          animation: cyber-gradient 4s linear infinite;
         }
 
         .neon-btn-primary:hover {
-          box-shadow: 0 0 30px rgba(var(--neon-magenta-rgb), 0.8);
-          transform: scale(1.05);
-          color: white;
+          transform: translateY(-5px) scale(1.03);
+          box-shadow: 0 10px 40px rgba(var(--neon-cyan-rgb), 0.3);
+          color: #000;
         }
 
         .neon-btn-outline {
-          background: transparent;
-          color: var(--neon-cyan);
-          padding: 0.8rem 2rem;
+          background: rgba(255, 255, 255, 0.03);
+          color: #fff;
+          padding: 0.8rem 2.2rem;
           font-weight: 700;
-          border-radius: 4px;
+          border-radius: 12px;
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 1px;
-          border: 2px solid var(--neon-cyan);
-          transition: all 0.3s ease;
-          box-shadow: 0 0 10px rgba(var(--neon-cyan-rgb), 0.2) inset, 0 0 10px rgba(var(--neon-cyan-rgb), 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+          backdrop-filter: blur(10px);
         }
 
         .neon-btn-outline:hover {
-          background: rgba(var(--neon-cyan-rgb), 0.1);
-          box-shadow: 0 0 20px rgba(var(--neon-cyan-rgb), 0.6) inset, 0 0 20px rgba(var(--neon-cyan-rgb), 0.6);
-          color: #fff;
-          transform: scale(1.05);
-          border-color: var(--neon-magenta);
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.3);
+          transform: translateY(-5px) scale(1.03);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
           
         .hero-particles {
@@ -182,6 +204,9 @@ const Home = () => {
       `}</style>
       
       <div className="hero-radial-glow"></div>
+      <div className="bg-blob blob-orange"></div>
+      <div className="bg-blob blob-purple"></div>
+      <div className="bg-blob blob-blue"></div>
       <div className="hero-particles"></div>
 
       <motion.div 
@@ -199,7 +224,6 @@ const Home = () => {
           <motion.h1 variants={itemVariants} className="space-title" style={{ fontSize: '5.5rem', lineHeight: '1.2', marginBottom: '1.5rem', color: 'white', fontWeight: 900 }}>
             <span style={{ fontSize: '3rem', color: '#a1a1aa' }}>Hi, I'm</span> <br />
             <div className="name-container">
-              <div className="name-glow-line"></div>
               <span className="cyber-name">Ritvik Katakam</span>
             </div>
           </motion.h1>

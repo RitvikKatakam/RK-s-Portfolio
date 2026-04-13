@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion'
 import './index.css'
 import Home from './components/Home'
 import Profile from './components/Profile'
@@ -8,10 +9,34 @@ import ExtraCurricular from './components/ExtraCurricular'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import StarryBackground from './components/StarryBackground'
+import GlobalGlow from './components/GlobalGlow'
 import { Home as HomeIcon, Briefcase, User, Settings, FileText, Mail, BookOpen } from 'lucide-react';
+
+const SectionWrapper = ({ children, id }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9, rotateX: 5 }}
+    whileInView={{ 
+      opacity: 1, 
+      scale: 1, 
+      rotateX: 0,
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+    }}
+    viewport={{ once: false, amount: 0.1 }}
+    style={{ transformStyle: 'preserve-3d' }}
+    className="section-parallax-wrapper"
+  >
+    {children}
+  </motion.div>
+);
 
 function App() {
   const [activeLink, setActiveLink] = useState('#home');
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -22,7 +47,7 @@ function App() {
           setActiveLink(`#${entry.target.id}`);
         }
       });
-    }, { threshold: 0.5 }); // Section is 'active' if 50% is visible
+    }, { threshold: 0.5 });
 
     sections.forEach(section => observer.observe(section));
     
@@ -31,7 +56,10 @@ function App() {
 
   return (
     <main className="app-container">
+      <motion.div className="scroll-progress-bar" style={{ scaleX, transformOrigin: "0%" }} />
       <StarryBackground />
+      <GlobalGlow />
+      
       <nav className="side-nav">
         <a href="#home" className={activeLink === '#home' ? 'active' : ''} onClick={() => setActiveLink('#home')} title="Home"><HomeIcon size={20} /><span className="nav-label">Home</span></a>
         <a href="#profile" className={activeLink === '#profile' ? 'active' : ''} onClick={() => setActiveLink('#profile')} title="Profile"><User size={20} /><span className="nav-label">Profile</span></a>
@@ -42,13 +70,13 @@ function App() {
         <a href="#contact" className={activeLink === '#contact' ? 'active' : ''} onClick={() => setActiveLink('#contact')} title="Contact"><Mail size={20} /><span className="nav-label">Contact</span></a>
       </nav>
       
-      <Home />
-      <Profile />
-      <Experience />
-      <Skills />
-      <ExtraCurricular />
-      <Projects />
-      <Contact />
+      <SectionWrapper id="home"><Home /></SectionWrapper>
+      <SectionWrapper id="profile"><Profile /></SectionWrapper>
+      <SectionWrapper id="experience"><Experience /></SectionWrapper>
+      <SectionWrapper id="skills"><Skills /></SectionWrapper>
+      <SectionWrapper id="extra-curricular"><ExtraCurricular /></SectionWrapper>
+      <SectionWrapper id="projects"><Projects /></SectionWrapper>
+      <SectionWrapper id="contact"><Contact /></SectionWrapper>
       
       <footer className="footer">
         <p>&copy; 2026 Ritvik Katakam Portfolio</p>
