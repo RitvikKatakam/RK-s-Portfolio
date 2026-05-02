@@ -23,10 +23,25 @@ const Projects = () => {
     { name: 'intrusion_detection_system', type: 'folder', url: 'https://github.com/RitvikKatakam/nitk_projects/tree/main/ml' },
     { name: 'phonebook_management.cpp', type: 'file', url: 'https://github.com/RitvikKatakam/nitk_projects/blob/main/c%2B%2B_PhonebookMangement.cpp' },
     { name: 'qr_code_generator.py', type: 'file', url: 'https://github.com/RitvikKatakam/nitk_projects/blob/main/python_QRcodeGenerator' },
-    { name: 'locating_darker_pixel_grovers', type: 'folder', url: 'https://github.com/RitvikKatakam/nitk_projects/tree/main/qc' }
+    { name: 'locating_darker_pixel_grovers', type: 'folder', url: 'https://github.com/RitvikKatakam/nitk_projects/tree/main/qc' },
+    { name: 'pixelscan', type: 'folder', url: 'https://github.com/RitvikKatakam/pixel-scan' }
   ];
 
   const realTimeProjects = [
+    { 
+      title: 'CyberGPT', 
+      desc: 'Advanced AI-powered cybersecurity assistant featuring a terminal-inspired interface for real-time threat analysis and automated security audits.',
+      url: 'https://cybergpt-1--katakamritvik89.replit.app',
+      logo: '/projects/CyberGPT logo.png',
+      github: 'https://github.com/RitvikKatakam/cybergpt'
+    },
+    { 
+      title: 'Brain Wave AI', 
+      desc: 'AI powered brain activity monitoring and intelligence analytics.',
+      url: 'https://brainwaveai.streamlit.app/',
+      logo: brainWaveLogo,
+      github: 'https://github.com/RitvikKatakam/chatapp_using_Groq'
+    },
     { 
       title: 'eduWrite', 
       desc: 'AI-driven writing assistant designed for educational environments.',
@@ -40,13 +55,6 @@ const Projects = () => {
       url: 'https://dsa-ai-assistant--aimaster956.replit.app/#groq-answer',
       logo: dsaAssistantLogo,
       github: 'https://github.com/RitvikKatakam/DSA_Ai_Assistant_Flask'
-    },
-    { 
-      title: 'Brain Wave AI', 
-      desc: 'AI powered brain activity monitoring and intelligence analytics.',
-      url: 'https://brainwaveai.streamlit.app/',
-      logo: brainWaveLogo,
-      github: 'https://github.com/RitvikKatakam/chatapp_using_Groq'
     }
   ];
 
@@ -130,9 +138,9 @@ const Projects = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {displayedRT.map((project, index) => (
+              {realTimeProjects.map((project) => (
                 <motion.div 
-                  key={index} 
+                  key={project.title} 
                   className="project-card realtime-card"
                   variants={cardVariants}
                   whileHover={{ 
@@ -150,26 +158,15 @@ const Projects = () => {
                     <h3>{project.title}</h3>
                     <p>{project.desc}</p>
                     <div className="card-actions">
-                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="project-link" onClick={e => e.stopPropagation()}>Visit Website →</a>
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="project-link" onClick={e => e.stopPropagation()}>VISIT WEBSITE →</a>
                       {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link github-link" onClick={e => e.stopPropagation()}>View Code ⌥</a>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link github-link" onClick={e => e.stopPropagation()}>VIEW CODE ⌥</a>
                       )}
                     </div>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
-            {realTimeProjects.length > 3 && (
-              <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                <button 
-                  className="btn-secondary-outline" 
-                  style={{ cursor: 'pointer', padding: '0.6rem 1.8rem', fontSize: '0.95rem' }}
-                  onClick={() => setShowAllRT(!showAllRT)}
-                >
-                  {showAllRT ? "Show Less" : "See More"}
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>

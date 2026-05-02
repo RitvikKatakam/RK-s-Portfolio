@@ -616,6 +616,96 @@ body::after {
   box-shadow: 0 0 30px rgba(var(--neon-cyan-rgb), 0.15);
 }
 
+.realtime-card {
+  background: rgba(15, 15, 20, 0.9);
+  border: 1px solid rgba(var(--neon-cyan-rgb), 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  height: 100%;
+}
+
+.card-logo {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--neon-cyan-rgb), 0.1);
+}
+
+.card-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.realtime-card:hover .card-logo img {
+  transform: scale(1.1);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  font-weight: 800;
+}
+
+.card-content p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: auto;
+}
+
+.github-link {
+  color: var(--neon-magenta) !important;
+}
+
+.github-link:hover {
+  filter: drop-shadow(0 0 8px var(--neon-magenta));
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-secondary-outline:hover {
+  background: rgba(var(--neon-cyan-rgb), 0.1);
+  box-shadow: 0 0 20px rgba(var(--neon-cyan-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+
+
 .project-card::before {
   content: "";
   position: absolute;
