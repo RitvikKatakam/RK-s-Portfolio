@@ -1,6 +1,10 @@
 import React from 'react';
 
+import { useState } from 'react';
+
 const ExtraCurricular = () => {
+  const [showCertificate, setShowCertificate] = useState(false);
+
   return (
     <section id="extra-curricular" className="section extra-curricular-section">
       <div className="content">
@@ -18,7 +22,20 @@ const ExtraCurricular = () => {
               <p className="cell-desc">
                 Participated in a prestigious national hackathon focused on Generative AI solutions for enterprise fintech applications.
               </p>
-              <span className="cell-badge cyan-badge">NATIONAL SHORTLIST</span>
+              <div className="achievement-footer">
+                <span className="cell-badge cyan-badge">NATIONAL SHORTLIST</span>
+                <a 
+                   href="#"
+                   onClick={(e) => {
+                     e.preventDefault();
+                     setShowCertificate(true);
+                   }}
+                   className="certificate-btn"
+                   title="View Certificate"
+                >
+                  📜 View Certificate
+                </a>
+              </div>
             </div>
 
             {/* Cell 2: List 1 */}
@@ -82,8 +99,26 @@ const ExtraCurricular = () => {
           </div>
         </div>
       </div>
+      <CertificateModal visible={showCertificate} onClose={() => setShowCertificate(false)} />
     </section>
   );
 };
 
+// Modal component for certificate image
+const CertificateModal = ({ visible, onClose }) => {
+  if (!visible) return null;
+  return (
+    <div className="certificate-modal" onClick={onClose}>
+      <img
+        src="/Experience & Education/ET_AI_Hackathon_Certificate.png"
+        alt="Certificate"
+        className="certificate-img"
+        onClick={(e) => e.stopPropagation()}
+      />
+    </div>
+  );
+};
+
 export default ExtraCurricular;
+
+
